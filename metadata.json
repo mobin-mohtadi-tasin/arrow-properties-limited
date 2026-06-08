@@ -1,0 +1,6 @@
+{
+  "name": "Arrow Properties Limited",
+  "description": "Arrow Properties Limited (Signature of Sophistication) is Bangladesh's premier property developer. Browse residential and commercial luxury landmarks across Dhaka, submit land for joint ventures, and inquire about premier properties.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
