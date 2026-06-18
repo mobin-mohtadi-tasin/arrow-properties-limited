@@ -12,6 +12,7 @@ const Header: React.FC = () => {
   const location = useLocation();
   const isHomePage = location.pathname === '/';
   const showHeaderLogo = !isHomePage || showLogo;
+  const isDarkBackground = !isHomePage && !isScrolled;
 
   useEffect(() => {
     const handleScroll = () => {
@@ -28,13 +29,13 @@ const Header: React.FC = () => {
   const navLinkClasses = ({ isActive }: { isActive: boolean }) => {
     const baseClasses = 'block py-2 px-3 rounded-lg font-medium transition-all duration-300 text-sm ';
     if (isActive) {
-      return baseClasses + (isScrolled
-        ? 'bg-brand-blue text-white shadow-md shadow-brand-blue/10'
-        : 'bg-white/20 text-white backdrop-blur-md border border-white/20');
+      return baseClasses + (isDarkBackground
+        ? 'bg-white/20 text-white backdrop-blur-md border border-white/20'
+        : 'bg-brand-blue text-white shadow-md shadow-brand-blue/10');
     }
-    return baseClasses + (isScrolled
-      ? 'text-slate-600 hover:bg-slate-100 hover:text-brand-blue'
-      : 'text-white/90 hover:bg-white/10 hover:text-white');
+    return baseClasses + (isDarkBackground
+      ? 'text-white/90 hover:bg-white/10 hover:text-white'
+      : 'text-slate-600 hover:bg-slate-100 hover:text-brand-blue');
   };
 
   const navLinks = (
@@ -64,16 +65,16 @@ const Header: React.FC = () => {
           >
             <AnimatePresence mode="popLayout">
               {showHeaderLogo && (
-                <motion.div
+                <Logo
                   key="header-logo"
                   layoutId="main-logo"
-                  initial={isHomePage ? { opacity: 0, scale: 0.8, y: 12 } : { opacity: 1, scale: 1, y: 0 }}
+                  initial={isHomePage ? { opacity: 1 } : { opacity: 0, scale: 0.8, y: 12 }}
                   animate={{ opacity: 1, scale: 1, y: 0 }}
-                  exit={{ opacity: 0, scale: 0.8, y: -12 }}
+                  exit={isHomePage ? { opacity: 1 } : { opacity: 0, scale: 0.8, y: -12 }}
                   transition={{ type: 'spring', damping: 25, stiffness: 120 }}
-                >
-                  <Logo isScrolled={isScrolled} className="h-12 md:h-16 w-auto" />
-                </motion.div>
+                  isScrolled={isScrolled}
+                  className="h-12 md:h-16 w-auto"
+                />
               )}
             </AnimatePresence>
           </Link>
@@ -85,7 +86,7 @@ const Header: React.FC = () => {
           <div className="md:hidden">
             <button
               onClick={() => setIsOpen(!isOpen)}
-              className={`p-2 rounded-lg transition-colors focus:outline-none ${isScrolled ? 'text-slate-800 hover:bg-slate-100' : 'text-white hover:bg-white/10'
+              className={`p-2 rounded-lg transition-colors focus:outline-none ${isDarkBackground ? 'text-white hover:bg-white/10' : 'text-slate-800 hover:bg-slate-100'
                 }`}
               id="mobile-menu-toggle"
             >

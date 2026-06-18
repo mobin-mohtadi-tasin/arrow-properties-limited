@@ -22,24 +22,24 @@ const Home: React.FC = () => {
     <div className="animate-fade-in text-slate-800">
       {/* Hero Section */}
       <section
-        className="relative min-h-[720px] sm:min-h-[800px] md:h-[90vh] md:min-h-[850px] pt-36 pb-28 sm:py-36 flex items-center justify-center text-center text-white bg-cover bg-center"
-        style={{ backgroundImage: "url('https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&q=80&w=1920')" }}
+        className="relative min-h-[720px] sm:min-h-[800px] md:h-[90vh] md:min-h-[850px] pt-36 pb-28 sm:py-36 flex items-center justify-center text-center text-slate-800 bg-cover bg-center"
+        style={{ backgroundImage: "url('https://images.unsplash.com/photo-1600585154526-990dced4db0d?auto=format&fit=crop&q=80&w=1920')" }}
       >
-        {/* Crisp Gradient Overlay for high-end cinematic contrast */}
-        <div className="absolute inset-0 bg-gradient-to-r from-slate-950/80 via-slate-900/70 to-slate-950/80"></div>
+        {/* White translucent overlay for high-end premium contrast and logo visibility */}
+        <div className="absolute inset-0 bg-white/75 backdrop-blur-[2px]"></div>
 
         <div className="relative z-10 px-6 max-w-4xl mx-auto flex flex-col items-center">
           {/* Logo & Motto Transition Group */}
           <div className="flex flex-col items-center justify-center mb-6 sm:mb-8 text-center select-none">
             {/* Centered Large Logo with smooth shrink/fly-up transition */}
             {!isScrolled ? (
-              <motion.div
-                layoutId="main-logo"
-                transition={{ type: 'spring', damping: 25, stiffness: 120 }}
-                className="mb-4 sm:mb-5 pointer-events-auto flex items-center justify-center w-80 sm:w-96 md:w-[32rem] h-32 sm:h-44 md:h-52"
-              >
-                <Logo isScrolled={false} className="h-32 sm:h-44 md:h-52 w-auto mx-auto" />
-              </motion.div>
+              <div className="relative mb-4 sm:mb-5 flex items-center justify-center w-80 sm:w-96 md:w-[32rem] h-32 sm:h-44 md:h-52">
+                <Logo
+                  layoutId="main-logo"
+                  transition={{ type: 'spring', damping: 25, stiffness: 120 }}
+                  className="h-32 sm:h-44 md:h-52 w-auto mx-auto pointer-events-auto"
+                />
+              </div>
             ) : (
               <div className="mb-4 sm:mb-5 w-80 sm:w-96 md:w-[32rem] h-32 sm:h-44 md:h-52" />
             )}
@@ -54,19 +54,19 @@ const Home: React.FC = () => {
               transition={{ duration: 0.3 }}
               className="flex flex-col items-center gap-2"
             >
-              <span className="text-lg sm:text-xl text-slate-800 font-['Carchive']">
+              <span className="text-lg sm:text-xl text-slate-650 font-['Carchive'] tracking-wider">
                 Signature of Sophistication
               </span>
-              <div className="w-12 h-[1px] bg-white/20"></div>
+              <div className="w-12 h-[1px] bg-slate-300"></div>
             </motion.div>
           </div>
 
-          <h1 className="text-3xl sm:text-4xl md:text-6xl font-extrabold mb-4 sm:mb-6 tracking-tight leading-tight text-white drop-shadow-lg">
+          <h1 className="text-3xl sm:text-4xl md:text-6xl font-extrabold mb-4 sm:mb-6 tracking-tight leading-tight text-slate-900 drop-shadow-sm">
             Crafting Exceptional Spaces, <br className="hidden md:inline" />Defining Elegant Lifestyles
           </h1>
 
-          <p className="text-sm sm:text-base md:text-xl max-w-2xl mx-auto mb-6 sm:mb-10 text-slate-200/95 leading-relaxed font-light">
-            <span className="font-semibold text-amber-400">Arrow Properties Limited</span> is Bangladesh's premier real estate developer, delivering ultra-modern residential and commercial landmarks built with superior craftsmanship and global standards.
+          <p className="text-sm sm:text-base md:text-xl max-w-2xl mx-auto mb-6 sm:mb-10 text-slate-650 leading-relaxed font-light">
+            <span className="font-semibold text-amber-600">Arrow Properties Limited</span> is Bangladesh's premier real estate developer, delivering ultra-modern residential and commercial landmarks built with superior craftsmanship and global standards.
           </p>
 
           <div className="flex flex-col sm:flex-row gap-4 justify-center items-center w-full sm:w-auto">
@@ -79,7 +79,7 @@ const Home: React.FC = () => {
             </Link>
             <Link
               to="/contact"
-              className="w-full sm:w-auto bg-white/10 hover:bg-white/20 text-white font-bold py-3 px-6 sm:py-4 sm:px-10 rounded-xl border border-white/30 backdrop-blur-md shadow-lg transition-all duration-300 transform hover:-translate-y-1 block text-center"
+              className="w-full sm:w-auto bg-slate-900/5 hover:bg-slate-900/10 text-slate-800 font-bold py-3 px-6 sm:py-4 sm:px-10 rounded-xl border border-slate-300 backdrop-blur-md shadow-md transition-all duration-300 transform hover:-translate-y-1 block text-center"
               id="hero-contact-btn"
             >
               Consult an Expert
