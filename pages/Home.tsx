@@ -32,26 +32,17 @@ const Home: React.FC = () => {
           {/* Logo & Motto Transition Group */}
           <div className="flex flex-col items-center justify-center mb-6 sm:mb-8 text-center select-none">
             {/* Centered Large Logo with smooth shrink/fly-up transition */}
-            <motion.div
-              animate={{
-                opacity: isScrolled ? 0 : 1,
-                y: isScrolled ? -60 : 0,
-                scale: isScrolled ? 0.75 : 1,
-                filter: isScrolled ? 'blur(4px)' : 'none'
-              }}
-              transition={{ type: 'spring', damping: 25, stiffness: 120 }}
-              className="bg-slate-950/45 backdrop-blur-md p-6 sm:p-8 mb-4 sm:mb-5 rounded-[2.5rem] border border-white/10 shadow-2xl w-56 sm:w-64 md:w-72 h-28 sm:h-36 md:h-40 pointer-events-auto flex items-center justify-center"
-            >
-              {!isScrolled && (
-                <motion.div
-                  layoutId="main-logo"
-                  transition={{ type: 'spring', damping: 25, stiffness: 120 }}
-                  className="w-full h-full flex items-center justify-center"
-                >
-                  <Logo isScrolled={false} className="h-16 sm:h-20 md:h-24 w-auto mx-auto" />
-                </motion.div>
-              )}
-            </motion.div>
+            {!isScrolled ? (
+              <motion.div
+                layoutId="main-logo"
+                transition={{ type: 'spring', damping: 25, stiffness: 120 }}
+                className="mb-4 sm:mb-5 pointer-events-auto flex items-center justify-center w-80 sm:w-96 md:w-[32rem] h-32 sm:h-44 md:h-52"
+              >
+                <Logo isScrolled={false} className="h-32 sm:h-44 md:h-52 w-auto mx-auto" />
+              </motion.div>
+            ) : (
+              <div className="mb-4 sm:mb-5 w-80 sm:w-96 md:w-[32rem] h-32 sm:h-44 md:h-52" />
+            )}
 
             {/* Aesthetic, minimal motto */}
             <motion.div
@@ -63,7 +54,7 @@ const Home: React.FC = () => {
               transition={{ duration: 0.3 }}
               className="flex flex-col items-center gap-2"
             >
-              <span className="text-[10px] sm:text-xs font-extralight italic tracking-[0.45em] text-slate-400 uppercase font-serif">
+              <span className="text-lg sm:text-xl text-slate-800 font-['Carchive']">
                 Signature of Sophistication
               </span>
               <div className="w-12 h-[1px] bg-white/20"></div>

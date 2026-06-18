@@ -28,12 +28,12 @@ const Header: React.FC = () => {
   const navLinkClasses = ({ isActive }: { isActive: boolean }) => {
     const baseClasses = 'block py-2 px-3 rounded-lg font-medium transition-all duration-300 text-sm ';
     if (isActive) {
-      return baseClasses + (isScrolled 
-        ? 'bg-brand-blue text-white shadow-md shadow-brand-blue/10' 
+      return baseClasses + (isScrolled
+        ? 'bg-brand-blue text-white shadow-md shadow-brand-blue/10'
         : 'bg-white/20 text-white backdrop-blur-md border border-white/20');
     }
-    return baseClasses + (isScrolled 
-      ? 'text-slate-600 hover:bg-slate-100 hover:text-brand-blue' 
+    return baseClasses + (isScrolled
+      ? 'text-slate-600 hover:bg-slate-100 hover:text-brand-blue'
       : 'text-white/90 hover:bg-white/10 hover:text-white');
   };
 
@@ -49,19 +49,18 @@ const Header: React.FC = () => {
   );
 
   return (
-    <header 
-      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
-        isScrolled 
-          ? 'bg-white/95 backdrop-blur-md shadow-md border-b border-slate-100 py-3' 
-          : 'bg-transparent py-5'
-      }`}
+    <header
+      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${isScrolled
+        ? 'bg-white/95 backdrop-blur-md shadow-md border-b border-slate-100 py-3'
+        : 'bg-transparent py-5'
+        }`}
       id="main-header"
     >
       <nav className="container mx-auto px-6">
         <div className="flex justify-between items-center">
-          <Link 
-            to="/" 
-            className="flex items-center min-h-[40px] md:min-h-[48px]"
+          <Link
+            to="/"
+            className="flex items-center min-h-[48px] md:min-h-[64px]"
           >
             <AnimatePresence mode="popLayout">
               {showHeaderLogo && (
@@ -73,7 +72,7 @@ const Header: React.FC = () => {
                   exit={{ opacity: 0, scale: 0.8, y: -12 }}
                   transition={{ type: 'spring', damping: 25, stiffness: 120 }}
                 >
-                  <Logo isScrolled={isScrolled} className="h-10 md:h-12 w-auto" />
+                  <Logo isScrolled={isScrolled} className="h-12 md:h-16 w-auto" />
                 </motion.div>
               )}
             </AnimatePresence>
@@ -86,9 +85,8 @@ const Header: React.FC = () => {
           <div className="md:hidden">
             <button
               onClick={() => setIsOpen(!isOpen)}
-              className={`p-2 rounded-lg transition-colors focus:outline-none ${
-                isScrolled ? 'text-slate-800 hover:bg-slate-100' : 'text-white hover:bg-white/10'
-              }`}
+              className={`p-2 rounded-lg transition-colors focus:outline-none ${isScrolled ? 'text-slate-800 hover:bg-slate-100' : 'text-white hover:bg-white/10'
+                }`}
               id="mobile-menu-toggle"
             >
               {isOpen ? <XIcon className="h-6 w-6" /> : <MenuIcon className="h-6 w-6" />}
@@ -97,9 +95,8 @@ const Header: React.FC = () => {
         </div>
 
         {isOpen && (
-          <div className={`md:hidden mt-4 space-y-1 rounded-xl p-4 transition-all duration-300 shadow-xl ${
-            isScrolled ? 'bg-white text-slate-800' : 'bg-slate-900/95 backdrop-blur-lg text-white'
-          }`}>
+          <div className={`md:hidden mt-4 space-y-1 rounded-xl p-4 transition-all duration-300 shadow-xl ${isScrolled ? 'bg-white text-slate-800' : 'bg-slate-900/95 backdrop-blur-lg text-white'
+            }`}>
             {navLinks}
           </div>
         )}
